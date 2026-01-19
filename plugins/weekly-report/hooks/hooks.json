@@ -1,0 +1,17 @@
+{
+  "description": "SessionEnd hook for automatic work log generation",
+  "hooks": {
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/log_session_wrapper.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

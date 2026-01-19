@@ -1,0 +1,15 @@
+{
+  "name": "weekly-report",
+  "version": "1.0.0",
+  "description": "Generate bilingual weekly reports (Markdown + PowerPoint) from daily work logs, with automatic session logging",
+  "author": {
+    "name": "Weijan"
+  },
+  "keywords": [
+    "weekly-report",
+    "周报",
+    "週報",
+    "work-log",
+    "productivity"
+  ]
+}

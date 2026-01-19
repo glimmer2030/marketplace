@@ -21,6 +21,23 @@
                 "message",
                 "utility"
             ]
+        },
+        {
+            "name": "weekly-report",
+            "source": "./plugins/weekly-report",
+            "description": "Generate bilingual weekly reports (Markdown + PowerPoint) from daily work logs, with /summary command for manual session logging",
+            "version": "1.0.0",
+            "author": {
+                "name": "Weijan"
+            },
+            "keywords": [
+                "weekly-report",
+                "周报",
+                "週報",
+                "work-log",
+                "productivity",
+                "pptx"
+            ]
         }
     ]
 }
