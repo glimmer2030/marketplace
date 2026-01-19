@@ -1,0 +1,26 @@
+{
+    "name": "glimmer2030-marketplace",
+    "owner": {
+        "name": "Weijan"
+    },
+    "metadata": {
+        "description": "A marketplace for Weijan's Claude plugins",
+        "version": "1.0.0"
+    },
+    "plugins": [
+        {
+            "name": "greeting-plugin",
+            "source": "./plugins/greeting-plugin",
+            "description": "A plugin that adds /greeting command to send a greeting message to the user",
+            "version": "1.0.0",
+            "author": {
+                "name": "Weijan"
+            },
+            "keywords": [
+                "greeting",
+                "message",
+                "utility"
+            ]
+        }
+    ]
+}
