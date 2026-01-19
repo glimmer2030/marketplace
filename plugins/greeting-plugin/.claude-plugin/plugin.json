@@ -1,8 +1,0 @@
-{
-  "name": "greeting-plugin",
-  "version": "1.0.0",
-  "description": "A plugin that adds a /greeting command to send a greeting message to the user",
-  "author": {
-    "name": "Weijan"
-  }
-}
