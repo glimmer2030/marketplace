@@ -38,6 +38,28 @@
                 "productivity",
                 "pptx"
             ]
+        },
+        {
+            "name": "5g-note-generator",
+            "source": "./plugins/5g-note-generator",
+            "description": "Generate comprehensive 5G/O-RAN technical learning notes in Traditional Chinese. Covers O-RAN architecture, xApp development, RIC platform, 5G Core, smart factory, AI/ML, MEC, and network slicing.",
+            "version": "1.0.0",
+            "author": {
+                "name": "Weijan"
+            },
+            "keywords": [
+                "5g",
+                "o-ran",
+                "oran",
+                "xapp",
+                "ric",
+                "5g-core",
+                "smart-factory",
+                "ai-ml",
+                "mec",
+                "network-slicing",
+                "technical-notes"
+            ]
         }
     ]
 }
