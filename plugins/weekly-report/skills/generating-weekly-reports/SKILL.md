@@ -232,10 +232,18 @@ Week N (YYYY-MM-DD to YYYY-MM-DD)
 2. **Calculate date range:** Use user-specified range, or default to current week (Monday-Sunday)
 3. **Extract and group:** Parse work log entries, auto-group into logical tasks
 4. **Generate Markdown:** Create `week-N.md` with proper structure - DO NOT ask questions first
-5. **Generate PowerPoint:** Call the generate_pptx.py script with: `python3 <plugin_path>/scripts/generate_pptx.py <week_number> <markdown_file> <output_pptx>`
-   - To find the plugin path, use: `~/.claude/plugins/cache/*/weekly-report/*/scripts/generate_pptx.py` or the installed location
-   - Example: `python3 ~/.claude/plugins/cache/glimmer2030-marketplace/weekly-report/1.0.0/scripts/generate_pptx.py 2 ./week-2.md ./week-2.pptx`
-6. **Present to user:** Show file paths, let user review and request edits if needed
+5. **Offer optional PowerPoint generation:**
+   - After Markdown is generated, ask the user (in Chinese is fine):
+     > 已經幫你產生 week-N.md，要不要順便生成 PowerPoint 週報？
+   - If the user says **no**:
+     - Stop here and present only the Markdown path.
+   - If the user says **yes**:
+     - Use the builtin PPTX generator script:
+       - `python3 <plugin_path>/scripts/generate_pptx.py <week_number> <markdown_file> <output_pptx>`
+       - Example (for this plugin):
+         - `python3 /home/william/projects/marketplace/plugins/weekly-report/scripts/generate_pptx.py 2 ./week-2.md ./week-2.pptx`
+   - Present the generated PPTX path to the user.
+6. **Present to user:** Show file paths (Markdown and PPTX if generated), let user review and request edits if needed
 
 ## Common Mistakes
 
@@ -249,7 +257,7 @@ Week N (YYYY-MM-DD to YYYY-MM-DD)
 | Missing format specs | Always include format header in Markdown |
 | Missing task separators | Use `---` between each task |
 | No indentation on content | All content items must have 2-space indent |
-| Forgetting PowerPoint generation | After MD, call generate_pptx.py |
+| Forgetting PowerPoint generation | After MD, offer optional PPTX generation using generate_pptx.py |
 | Using `python` instead of `python3` | Always use `python3` command |
 
 ## Red Flags - STOP and Correct
@@ -262,7 +270,7 @@ Week N (YYYY-MM-DD to YYYY-MM-DD)
 - Using bullet symbols (■, •, -, *) → Use 2-space indentation only
 - Forgetting `---` separators → Must separate all tasks with horizontal rules
 - Content without indentation → All content items need 2-space indent
-- Skipping PowerPoint generation → Must call generate_pptx.py
+- Skipping PowerPoint generation → Must offer optional PPTX generation using generate_pptx.py
 - Using `python` command → Use `python3` instead
 
 ## Rationalization Table
@@ -274,7 +282,8 @@ Week N (YYYY-MM-DD to YYYY-MM-DD)
 | "No work log available" | ~/.work-log.md always exists, read it |
 | "Work log has all details" | Synthesize, don't copy verbatim |
 | "Bullet symbols look better" | User specified indentation only, no symbols |
-| "Skip PowerPoint generation" | Both MD and PPTX are required deliverables |
+| User explicitly requested PPTX but you never offered it | Always offer optional PPTX generation after Markdown is created using builtin generator |
+| User chose PPTX generation but you did not run any command | Ensure you actually run the builtin generator command when user says yes |
 
 ## Example Workflow
 
