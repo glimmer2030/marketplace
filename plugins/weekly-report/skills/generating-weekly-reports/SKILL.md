@@ -48,37 +48,22 @@ Week Report
 
 Each task is completely independent with its own four-element structure.
 
-## Work Log Integration
+## Data Sources
 
-**Data Source:** `~/.work-log.md` - Cross-project daily work log
+**1. Work Log:** `~/.work-log.md` - Primary source for task structure.
+- **Usage:** Extracts date-bound entries. `[project-name]` in the log defines the Task Name.
 
-**Format:**
-```markdown
-# Work Log 2026
+**2. Daily Memory:** `~/.openclaw/workspace/memory/YYYY-MM-DD.md` - Technical depth for the specific day.
+- **Mapping Strategy:** The AI should look for **Header-based Mapping**. If the daily memory contains sections with project names (e.g., `## Project: Moss Sanity`), it must map that technical context directly to the corresponding `[MOSS_Sanity]` task in the report.
+- **Restriction:** Use only daily memory files that fall within the weekly report's date range to ensure accuracy. Do NOT use long-term `MEMORY.md`.
 
-## 2026-01-12 (Monday)
-### [project-name] 16:38
-- Work summary bullet 1
-- Work summary bullet 2
-
-### [another-project] 14:20
-- Different project work
-```
-
-**Parsing Strategy:**
-1. Read entire file (small, structured)
-2. Extract date sections (`## YYYY-MM-DD`)
-3. Extract project entries (`### [project] HH:MM`)
-4. Group bullets under each project/timestamp
-5. Filter by target week date range
-
-**Usage:**
-- Work log provides **reference material** only
-- Show user grouped entries from the week
-- User organizes content into task structure
-- User supplements with objectives, challenges, solutions
-
-**Critical:** Never copy work log bullets verbatim. User must structure content for report format.
+## Parsing Strategy
+1. **Target Range extraction:** Identify all `## YYYY-MM-DD` sections in the Work Log and matching `memory/YYYY-MM-DD.md` files for the week.
+2. **Project-to-Task Mapping:** 
+   - Extract `[project-name]` from Work Log.
+   - Scan corresponding Daily Memory files for matching project headers or context.
+3. **Synthesis:** Combine the high-level progress from the Work Log with the specific technical data (coordinates, script names, terminal results) found in the Daily Memory.
+4. **Draft Generation:** Produce the final bilingual Markdown.
 
 ## Content Extraction Process
 
