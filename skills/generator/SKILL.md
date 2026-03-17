@@ -1,7 +1,7 @@
 ---
 name: generator
 description: This skill should be used when the user asks to "generate 5G note", "create O-RAN note", "生成技術筆記", "生成 2026 W2", mentions "5G technical note", "O-RAN learning material", or discusses 5G/O-RAN topics and wants to create learning documentation.
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 5G/O-RAN Technical Note Generator
@@ -83,6 +83,7 @@ Ask using AskUserQuestion with these questions:
 - Practical code examples (Python/YAML preferred) with syntax highlighting and inline comments
 - Tables summarizing key concepts
 - Realistic, standards-based examples
+- **Diagrams**: Use ` ```mermaid ` blocks for architecture/flow diagrams (NOT ASCII art). The docx generator renders them as PNG images automatically.
 
 ## File Naming
 
@@ -115,7 +116,9 @@ python3 generator/generate_docx.py <YYYYMMDD> <input.md>
 2. The script auto-discovers the template docx (matching `*_研究記錄簿_W*_*.docx`) and derives the output filename from it. It:
    - Updates cover page: 記錄日期 → YYYY/MM/DD, 年份週別 → YYYYWNN
    - Replaces content from paragraph 12 onward
-   - Font: 新細明體 12pt, code: 細明體 12pt
+   - Renders ` ```mermaid ` blocks as PNG images (via mmdc/mermaid-cli)
+   - Applies Pygments syntax highlighting to code blocks (Consolas 10pt, gray background)
+   - Body text: 新細明體 12pt
 
 ### Step 3: Present results
 ```
